@@ -36,7 +36,7 @@ public class Login   {
 		
 		A1 =new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String Uid = jtf.getText();
+				String Uname = jtf.getText();
 				char[] pa =jpf.getPassword();
 				String passw ="";
 				for(int i = pa.length;i>0;i--){//java的密码是倒序存在char【】里边的
@@ -44,11 +44,11 @@ public class Login   {
 				}
 				//System.out.println(passw);
 				
-				if(Uid!=""&&passw!=""){
-					loginsql l =new loginsql();
-					System.out.println(l.login(Uid,passw));
+				if(Uname!=""&&passw!=""){
+					loginsql l = new loginsql();
+					System.out.println(l.login(Uname,passw));
 					jf.setVisible(false);
-					if(l.login(Uid,passw)==1){
+					if(l.login(Uname,passw)==1){
 					frame fr = new frame();
 					}else{
 						jf.setVisible(true);
@@ -64,7 +64,28 @@ public class Login   {
 		A2 =new ActionListener(){
 
 			public void actionPerformed(ActionEvent e) {
+				String Uname = jtf.getText();
+				char[] pa =jpf.getPassword();
+				String passw ="";
+				for(int i = pa.length;i>0;i--){//java的密码是倒序存在char【】里边的
+					passw = pa[i-1]+passw;
+				}
+				//System.out.println(passw);
 				
+				if(Uname!=""&&passw!=""){
+					register r = new register();
+					int rs = r.registersql(Uname, passw);
+					System.out.println(rs);
+					jf.setVisible(false);
+					if(rs==2){ 
+					frame fr = new frame();//可以加上用户的id了
+					}else{
+						jf.setVisible(true);
+						System.out.println("Wrong password");
+					}
+					
+					
+				}
 				
 				
 			}
@@ -79,8 +100,8 @@ public class Login   {
 		p4= new JPanel();
 		
 		
-		l1=new JLabel("Uid:");
-		l1.setFont(new Font("Adobe Hebrew", Font.PLAIN, 18));
+		l1=new JLabel("Username:");
+		l1.setFont(new Font("Cambria", Font.PLAIN, 13));
 		l1.setBounds(83, 10, 81, 33);
 		jtf=new JTextField(20);
 		jtf.setBounds(170, 16, 126, 21);
@@ -123,16 +144,7 @@ public class Login   {
 		JButton btnNewButton_1 = new JButton("Register");
 		btnNewButton_1.setBounds(177, 21, 93, 23);
 		p3.add(btnNewButton_1);
-		btnNewButton_1.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e) {
-				
-				
-				
-			}
-			
-			
-			
-		});
+		btnNewButton_1.addActionListener(A2);
 		
 		JButton btnNewButton_2 = new JButton("Cancel");
 		btnNewButton_2.setBounds(290, 21, 93, 23);

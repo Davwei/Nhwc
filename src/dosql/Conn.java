@@ -11,13 +11,13 @@ public class Conn {
 	public Statement stmt = null;
 	public PreparedStatement pst = null;
 
-	public Conn(String sql) {
+	public Conn() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 			
 			conn = DriverManager.getConnection(url, name, code);
-			stmt = conn.createStatement();//执行一次
-			pst = conn.prepareStatement(sql);//批量执行效率高
+			//stmt = conn.createStatement();//执行一次
+			//pst = conn.prepareStatement(sql);//批量执行效率高
 			
 			// stmt.close();
 			// conn.close();
@@ -26,6 +26,17 @@ public class Conn {
 		} catch (Exception e) {
 			System.out.println("wrong!");
 		}
+	}
+	public void dosql(String sql){
+		try {
+			stmt = conn.createStatement();//执行一次
+			pst = conn.prepareStatement(sql);//批量执行效率高
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
 	}
 
 	public void close() {

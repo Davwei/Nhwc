@@ -9,9 +9,10 @@ public class loginsql {
 		//1: login succeed  2: false
 		String sql1 ="Select * from User where User_id ='"+uid+"' and passw ='"+passw+"' and status =b'0' ";
 		//status prepared for login's status check 
-		Conn con =new Conn(sql1);
+		Conn con =new Conn();
 		ResultSet rs =null ;
 		try {
+			con.dosql(sql1);
 			rs = con.stmt.executeQuery(sql1);
 			
 			//System.out.println(rs.getRow());

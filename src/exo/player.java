@@ -2,7 +2,7 @@ package exo;
 
 public class player {
 	private String name,password;
-	private int point=0;
+	private int points=0;
 	public boolean host,now;
 	
 	
@@ -32,7 +32,7 @@ public class player {
 		this.password = password;
 	}
 	public void earnPoint(){
-		point++;
+		points++;
 
 	}
 

@@ -17,6 +17,7 @@ public class MyPath {
 	}
 	
 	public void lineTo(Point target) {
+		
 		path.lineTo(target.x, target.y);
 	}
 
