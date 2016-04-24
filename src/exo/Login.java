@@ -22,7 +22,7 @@ public class Login   {
 	ActionListener A1,A2,A3;
 	private JLabel lblNewLabel;
 	private JButton btnNewButton;
-	
+	InjectionDAO idao;
 	
 	public Login(){
 		
@@ -45,10 +45,10 @@ public class Login   {
 				//System.out.println(passw);
 				
 				if(Uname!=""&&passw!=""){
-					loginsql l = new loginsql();
-					System.out.println(l.login(Uname,passw));
+					idao = new InjectionDAOlmpl();
+					System.out.println(idao.loginsql(Uname,passw));
 					jf.setVisible(false);
-					if(l.login(Uname,passw)==1){
+					if(idao.loginsql(Uname,passw)==1){
 					frame fr = new frame();
 					}else{
 						jf.setVisible(true);
@@ -73,8 +73,8 @@ public class Login   {
 				//System.out.println(passw);
 				
 				if(Uname!=""&&passw!=""){
-					register r = new register();
-					int rs = r.registersql(Uname, passw);
+					idao = new InjectionDAOlmpl();
+					int rs = idao.registersql(Uname, passw);
 					System.out.println(rs);
 					jf.setVisible(false);
 					if(rs==2){ 

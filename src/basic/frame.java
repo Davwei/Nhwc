@@ -47,7 +47,14 @@ public class frame extends JFrame  {
 	public frame(){
 
 		la = new Bartool();
-		chat= new Chat();
+		try{
+			chat= new Chat();
+		
+		}
+		catch(Exception e){			
+			System.out.println("Chat server not found");
+		}
+		
 		Tb=new TBar();
 		BorderLayout border =new BorderLayout();
 		
@@ -115,7 +122,7 @@ public class frame extends JFrame  {
 
 	public static void main(String[] agrs){
 		
-		//frame fr =new frame();
+		frame fr =new frame();
 		
 	}
 

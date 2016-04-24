@@ -2,7 +2,8 @@ package exo;
 import java.io.*;
 import java.net.*;
 import java.util.*;
-public class Server {
+
+public class Server {//需要把这个server 分成两个servers
 
 	public static void main(String[] args) {
 		Server server=new Server();
@@ -15,8 +16,8 @@ public class Server {
 	Socket s=null;
 	Socket sd=null;
 	
-	int clientnumber=0;
-	int whosturn =0;
+	int clientnumber= 0;
+	int whosturn = 0;
 	
 	 
 	List<Sclient> Sclients=new ArrayList<Sclient>();
